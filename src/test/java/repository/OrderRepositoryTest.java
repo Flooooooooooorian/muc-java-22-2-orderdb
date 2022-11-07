@@ -35,4 +35,29 @@ public class OrderRepositoryTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    void get() {
+        //GIVEN
+        List<Product> products = List.of(
+                new Product("Handy", "123"),
+                new Product("Apfel", "567457"));
+
+        List<Order> orders = List.of(
+                new Order("123", products),
+                new Order("34664236", products));
+
+
+        OrderRepository orderRepository = new OrderRepository(orders);
+
+        //WHEN
+
+        Order actual = orderRepository.get("34664236");
+
+        //THEN
+        Order expected = new Order("34664236", products);
+
+        assertEquals(expected, actual);
+
+    }
 }

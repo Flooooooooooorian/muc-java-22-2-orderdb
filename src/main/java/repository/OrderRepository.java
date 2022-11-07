@@ -1,6 +1,7 @@
 package repository;
 
 import model.Order;
+import model.Product;
 
 import java.util.List;
 
@@ -13,5 +14,14 @@ public class OrderRepository {
 
     public List<Order> list() {
         return orders;
+    }
+
+    public Order get(String id) {
+        for (Order order : orders) {
+            if (order.getId().equals(id)) {
+                return order;
+            }
+        }
+        return null;
     }
 }
