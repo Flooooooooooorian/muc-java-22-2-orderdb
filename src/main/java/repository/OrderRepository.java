@@ -24,4 +24,9 @@ public class OrderRepository {
         }
         return null;
     }
+
+    public Order add(Order orderToAdd) {
+        orders.add(orderToAdd);
+        return orderToAdd;
+    }
 }
