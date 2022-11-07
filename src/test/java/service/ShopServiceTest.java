@@ -121,4 +121,30 @@ class ShopServiceTest {
         Order expected = new Order("123456", products);
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testAddOrder() {
+        //GIVEN
+        Product product1 = new Product("Apfel", "123456");
+        Product product2 = new Product("Birne", "123");
+
+        List<Product> products = new ArrayList<>();
+        products.add(product1);
+        products.add(product2);
+        ProductRepository productRepository = new ProductRepository(products);
+
+        List<Order> orders = new ArrayList<>();
+        OrderRepository orderRepository = new OrderRepository(orders);
+
+        ShopService shopService = new ShopService(orderRepository, productRepository);
+
+        //WHEN
+        String orderId = "ABC13";
+        List<String> ids = List.of("123456", "123");
+        Order actual = shopService.addOrder(orderId, ids);
+
+        //THEN
+        Order expected = new Order(orderId, List.of(product1, product2));
+        assertEquals(expected, actual);
+    }
 }

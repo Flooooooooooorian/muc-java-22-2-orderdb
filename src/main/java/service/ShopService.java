@@ -33,4 +33,17 @@ public class ShopService {
     public Order getOrder(String id) {
         return orderRepository.get(id);
     }
+
+    public Order addOrder(String orderId, List<String> ids) {
+
+        List<Product> products = new ArrayList<>();
+
+        for (String id : ids) {
+            Product product = productRepository.get(id);
+            products.add(product);
+        }
+
+        Order newOrder = new Order(orderId, products);
+        return orderRepository.add(newOrder);
+    }
 }
