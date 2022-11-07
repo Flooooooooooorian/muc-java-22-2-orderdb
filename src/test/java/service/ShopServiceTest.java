@@ -74,4 +74,26 @@ class ShopServiceTest {
         List<Product> expected = new ArrayList<>(products);
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testListOrders() {
+        //GIVEN
+        List<Order> orders = new ArrayList<>();
+        OrderRepository orderRepository = new OrderRepository(orders);
+
+        Product product1 = new Product("Banane", "123");
+        List<Product> products = new ArrayList<>();
+        products.add(product1);
+
+        ProductRepository productRepository = new ProductRepository(products);
+
+        ShopService shopService = new ShopService(orderRepository, productRepository);
+
+        //WHEN
+        List<Order> actual = shopService.listOrders();
+
+        //THEN
+        List<Order> expected = new ArrayList<>(orders);
+        assertEquals(expected, actual);
+    }
 }

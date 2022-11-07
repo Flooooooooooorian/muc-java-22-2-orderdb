@@ -1,5 +1,6 @@
 package service;
 
+import model.Order;
 import model.Product;
 import repository.OrderRepository;
 import repository.ProductRepository;
@@ -23,5 +24,9 @@ public class ShopService {
 
     public List<Product> listProducts() {
         return productRepository.list();
+    }
+
+    public List<Order> listOrders() {
+        return orderRepository.list();
     }
 }
