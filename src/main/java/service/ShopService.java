@@ -21,5 +21,7 @@ public class ShopService {
         return productRepository.get(id);
     }
 
-
+    public List<Product> listProducts() {
+        return productRepository.list();
+    }
 }
