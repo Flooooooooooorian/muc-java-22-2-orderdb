@@ -29,4 +29,8 @@ public class ShopService {
     public List<Order> listOrders() {
         return orderRepository.list();
     }
+
+    public Order getOrder(String id) {
+        return orderRepository.get(id);
+    }
 }
